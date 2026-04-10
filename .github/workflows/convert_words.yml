@@ -1,0 +1,19 @@
+name: Convert Words to Lua
+
+on:
+  workflow_dispatch:
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run conversion script
+        run: python convert_words.py
+
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: words-lua
+          path: words_lua.txt
